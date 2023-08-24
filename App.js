@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#fff",
     fontStyle: "italic",
+    margin: 25,
   },
 });
