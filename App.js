@@ -1,33 +1,33 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Text } from "react-native";
+import { useState, useEffect } from "react";
+import { Text, SafeAreaView, StyleSheet } from "react-native";
+
+import frases from "./assets/frases.json";
 
 export default function App() {
+  const [frase, setFrase] = useState("");
+  useEffect(() => {
+    setFrase(frases[Math.floor(Math.random() * frases.length)]);
+  }, []);
   return (
-    <View style={styles.container}>
-      <StatusBar style="light" />
-      <View style={styles.icon}>❤</View>
-      <Text style={styles.title}>Caio & Gabi</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.paragraph}>{frase}</Text>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    gap: 5,
+    backgroundColor: "#8093F1",
+    padding: 8,
   },
-  icon: {
-    borderRadius: 999999,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: 90,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
+  paragraph: {
+    fontSize: 18,
+    fontWeight: "600",
+    textAlign: "center",
+    color: "#fff",
+    fontStyle: "italic",
   },
 });
